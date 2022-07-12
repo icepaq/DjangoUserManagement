@@ -21,6 +21,9 @@
                 <div class="user">
                     <div class="name">
                         {{ user.first_name }} {{ user.last_name }}
+                        {% if user.role == 'admin' %}
+                            (admin)
+                        {% endif %}
                     </div>
                     <div class="smallertext">
                         {{ user.number }}
