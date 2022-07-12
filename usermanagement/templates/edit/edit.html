@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+
+    <body>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <div class="wrapper">
+            <div class="title">Editing {{ user.first_name }}</div>
+            <div class="subtitle">Info</div>
+            <form action="{% url 'submitedit' user.id %}" method="POST"></form>
+                {% csrf_token %}
+                <input class="text_input" type="text" id="first_name" value="{{ user.first_name }}" />
+                <input class="text_input" type="text" id="last_name" value="{{ user.last_name }}" />
+                <input class="text_input" type="text" id="number" value="{{ user.number }}" />
+                <input class="text_input" type="text" id="email" value="{{ user.email }}" /> <br /> <br />
+
+                {% if user.role == 'admin' %}
+                    <input class="radio_input" type="radio" id="admin" name="role" checked/>
+                {% else %}
+                    <input class="radio_input" type="radio" id="admin" name="role"/>
+                {% endif %}
+                    <label for="admin">Admin</label>
+                    <br />
+
+                {% if user.role == 'user' %}
+                    <input class="radio_input" type="radio" id="user" name="role" checked/>
+                {% else %}
+                    <input class="radio_input" type="radio" id="user" name="role"/>
+                {% endif %}
+                    <label for="user">User</label>
+                    <br />
+
+
+                <button class="button" onclick="submit()" class="submit_button">Submit</button>
+                <button class="button" onclick="_delete()" class="delete_button">Delete</button>
+            </form>
+
+        </div>
+    </body>
+    <script>
+        // Using submit function instead of form due to issues with submit button. 
+        // Was faster to create a handler function instead.
+        const submit = () => {
+            const first_name = document.getElementById("first_name").value;
+            const last_name = document.getElementById("last_name").value;
+            const number = document.getElementById("number").value;
+            const email = document.getElementById("email").value;
+            const role = document.querySelector('input[name="role"]:checked').id;
+
+            const params = new URLSearchParams();
+            params.append("first_name", first_name);
+            params.append("last_name", last_name);
+            params.append("number", number);
+            params.append("email", email);
+            params.append("role", role);
+
+            fetch("{% url 'submitedit' user.id %}", { method: "POST", body: params })
+                .then(window.location.href = "{% url 'index' %}");
+        }
+
+        const _delete = () => {
+            fetch("{% url 'delete' user.id %}", { method: "GET" }).
+                then(window.location.href = "{% url 'index' %}");
+        }
+    </script>
+</html>
+

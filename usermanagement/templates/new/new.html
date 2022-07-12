@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+
+    <body>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <div class="wrapper">
+            <div class="title">New User</div>
+            <form>
+                <input class="text_input" type="text" id="first_name" placeholder="First Name" />
+                <input class="text_input" type="text" id="last_name" placeholder="Last Name" />
+                <input class="text_input" type="text" id="number" placeholder="Number" />
+                <input class="text_input" type="text" id="email" placeholder="Email" /> <br /> <br />
+                
+                <input class="radio_input" type="radio" id="admin" name="role" />
+                <label for="admin">Admin</label>
+                <br />
+
+                <input class="radio_input" type="radio" id="user" name="role" />
+                <label for="user">User</label>
+            </form>
+            <button class="button" onclick="submit()" class="submit_button">Submit</button>
+        </div>
+    </body>
+
+    <script>
+        const submit = () => {
+            const first_name = document.getElementById("first_name").value;
+            const last_name = document.getElementById("last_name").value;
+            const number = document.getElementById("number").value;
+            const email = document.getElementById("email").value;
+            const role = document.querySelector('input[name="role"]:checked').id;
+
+            const params = new URLSearchParams();
+            params.append("first_name", first_name);
+            params.append("last_name", last_name);
+            params.append("number", number);
+            params.append("email", email);
+            params.append("role", role);
+
+            fetch("{% url 'createnewuser' %}", {
+                method: "POST",
+                body: params,
+            }).then(window.location.href = "{% url 'index' %}");
+        }
+    </script>
+</html>

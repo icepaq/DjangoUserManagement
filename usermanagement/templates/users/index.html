@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+
+    <body>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        {% if user_list %}
+            <div class="wrapper">
+                <div class="title">Users</div>
+                <div class="count">There are {{user_count}} users!</div>
+            {% for user in user_list %}
+            <a href="/edit/{{ user.id }}/">
+                <div class="user">
+                    <div class="name">
+                        {{ user.first_name }} {{ user.last_name }}
+                    </div>
+                    <div class="smallertext">
+                        {{ user.number }}
+                    </div>
+                    <div class="smallertext">
+                        {{ user.email }}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>No users are available.</p>
+        {% endif %}
+    </body>
+</html>
+
