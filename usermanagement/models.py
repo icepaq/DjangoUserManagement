@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 class User(models.Model):
@@ -10,3 +11,8 @@ class User(models.Model):
 
     def __str__(self) -> str:
         return self.first_name + " " + self.last_name
+
+class UserForm (ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'number', 'role']
