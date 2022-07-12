@@ -6,10 +6,10 @@
     <body>
         {% load static %}
         <link rel="stylesheet" href="{% static 'styles.css' %}">
-        {% if user_list %}
+        {% if object_list %}
             <div class="wrapper">
                 <div class="title">Users</div>
-                <div class="count">There are {{user_count}} users!</div>
+                <div class="count">There are {{object_list.count}} users!</div>
 
                 <a href="{% url 'new' %}">
                     <center>

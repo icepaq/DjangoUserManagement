@@ -1,19 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.views.generic import ListView, DetailView
 from django.views.decorators.csrf import csrf_exempt
 from .models import User, UserForm
 
-
-def index(request):
-    user_list = User.objects.all()
-    
-
-    template = loader.get_template('users/index.html')
-    context = {
-        'user_list': user_list,
-        'user_count': len(user_list),
-    }
-    return HttpResponse(template.render(context, request))
+class UserListView(ListView):
+    model = User
+    template_name = 'users/index.html'
 
 def edit(request, user_id):
     user = User.objects.get(id=user_id)
