@@ -16,12 +16,13 @@
                 <input class="text_input" type="text" id="number" value="{{ user.number }}" />
                 <input class="text_input" type="text" id="email" value="{{ user.email }}" /> <br /> <br />
 
+                <div class="subtitle">Role</div>
                 {% if user.role == 'admin' %}
                     <input class="radio_input" type="radio" id="admin" name="role" checked/>
                 {% else %}
                     <input class="radio_input" type="radio" id="admin" name="role"/>
                 {% endif %}
-                    <label for="admin">Admin</label>
+                    <label for="admin">Admin - Can delete users</label>
                     <br />
 
                 {% if user.role == 'user' %}
@@ -29,7 +30,7 @@
                 {% else %}
                     <input class="radio_input" type="radio" id="user" name="role"/>
                 {% endif %}
-                    <label for="user">User</label>
+                    <label for="user">Regular - Can't delete users</label>
                     <br />
 
 

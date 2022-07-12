@@ -10,6 +10,12 @@
             <div class="wrapper">
                 <div class="title">Users</div>
                 <div class="count">There are {{user_count}} users!</div>
+
+                <a href="{% url 'new' %}">
+                    <center>
+                        <div class="button">New User</div>
+                    </center>
+                </a>
             {% for user in user_list %}
             <a href="/edit/{{ user.id }}/">
                 <div class="user">
