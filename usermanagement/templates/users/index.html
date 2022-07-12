@@ -6,7 +6,6 @@
     <body>
         {% load static %}
         <link rel="stylesheet" href="{% static 'styles.css' %}">
-        {% if object_list %}
             <div class="wrapper">
                 <div class="title">Users</div>
                 <div class="count">There are {{object_list.count}} users!</div>
@@ -35,9 +34,6 @@
             </a>
             {% endfor %}
             </div>
-        {% else %}
-            <p>No users are available.</p>
-        {% endif %}
     </body>
 </html>
 
