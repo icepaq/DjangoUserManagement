@@ -17,4 +17,4 @@ Runs on a SQLite database.
 - Total time - 3.5 hours
 
 ### Demo
-![Demo](/demo.gif)
+![Demo](demo.gif)
