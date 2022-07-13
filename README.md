@@ -17,4 +17,5 @@ Runs on a SQLite database.
 - Total time - 3.5 hours
 
 ### Demo
+Demo GIF below. See MP4 file for a full demo of the project.
 ![Demo](demo.gif)
