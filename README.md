@@ -15,3 +15,6 @@ Runs on a SQLite database.
 - 1 hour creating new and edit page
 - 30 minutes fixing visual bugs and implementing all requirements from project
 - Total time - 3.5 hours
+
+### Demo
+![Demo](/demo.gif)
