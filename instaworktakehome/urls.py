@@ -21,7 +21,7 @@ app_name = 'usermanagement'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', usermanagement_views.UserListView.as_view(), name='index'),
-    path('edit/<int:user_id>/', usermanagement_views.edit, name='edit'),
+    path('edit/<pk>/', usermanagement_views.EditView.as_view(), name='edit'),
     path('edit/submitedit/<int:user_id>/', usermanagement_views.submitedit, name='submitedit'),
     path('delete/<int:user_id>/', usermanagement_views.delete, name='delete'),
     path('createnewuser/', usermanagement_views.create_new_user, name='createnewuser'),

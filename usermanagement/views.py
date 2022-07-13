@@ -8,15 +8,9 @@ class UserListView(ListView):
     model = User
     template_name = 'users/index.html'
 
-def edit(request, user_id):
-    user = User.objects.get(id=user_id)
-    template = loader.get_template('edit/edit.html')
-
-    context = {
-        'user': user,
-    }
-
-    return HttpResponse(template.render(context, request))
+class EditView(DetailView):
+    model = User
+    template_name = 'edit/edit.html'
 
 @csrf_exempt
 def submitedit(request, user_id):
